@@ -1,14 +1,15 @@
+
 const express = require('express');
 const http = require('http');
-const { Server } = require("socket.io");
+const socketio = require("socket.io");
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
+const io = socketio(server);
 
 //It's a middleware that actually maps where are our static assets
 app.use('/', express.static(__dirname + '/public'));
 
-app.listen(3000, () => {
+server.listen(1050, () => {
     console.log("Server started");
 })
